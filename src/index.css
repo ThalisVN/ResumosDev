@@ -1,3 +1,313 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Cores do tema escuro (padrão) ---------- */
+:root[data-theme="dark"] {
+  --bg: #0f1115;
+  --surface: #12151c;
+  --line: #232936;
+  --fg: #e6e8ee;
+  --muted: #98a0b3;
+  --accent: #8fa8ff;
+  --hover: #1a2030;
+  --active: #1d2536;
+  --codebg: #0b0d12;
+  --callout: #161d2b;
+  --tok-kw: #c4a7ff;
+  --tok-str: #8fd19e;
+  --tok-num: #f0b072;
+}
+
+/* ---------- Cores do tema claro ---------- */
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --surface: #f6f7f9;
+  --line: #e3e6ec;
+  --fg: #1a1d24;
+  --muted: #5b6475;
+  --accent: #3b5bdb;
+  --hover: #eceff4;
+  --active: #e7ecff;
+  --codebg: #f3f4f7;
+  --callout: #eef2ff;
+  --tok-kw: #7048e8;
+  --tok-str: #2b8a3e;
+  --tok-num: #d9480f;
+}
+
+/* ---------- Ensina o Tailwind a usar essas cores ----------
+   Gera classes como bg-bg, bg-surface, border-line, text-fg,
+   text-muted, text-accent, bg-hover, bg-active, bg-codebg, bg-callout */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-hover: var(--hover);
+  --color-active: var(--active);
+  --color-codebg: var(--codebg);
+  --color-callout: var(--callout);
+}
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ---------- Base ---------- */
+html {
+  color-scheme: dark;
+}
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Texto dos resumos ---------- */
+.reader {
+  --tw-prose-body: var(--fg);
+  --tw-prose-headings: var(--fg);
+  --tw-prose-lead: var(--muted);
+  --tw-prose-links: var(--accent);
+  --tw-prose-bold: var(--fg);
+  --tw-prose-counters: var(--muted);
+  --tw-prose-bullets: var(--muted);
+  --tw-prose-hr: var(--line);
+  --tw-prose-quotes: var(--fg);
+  --tw-prose-quote-borders: var(--line);
+  --tw-prose-captions: var(--muted);
+  --tw-prose-code: var(--fg);
+  --tw-prose-th-borders: var(--line);
+  --tw-prose-td-borders: var(--line);
+}
+
+.reader h2 {
+  font-size: 1.35em;
+  margin-top: 2em;
+}
+.reader h3 {
+  font-size: 1.15em;
+}
+.reader h2,
+.reader h3 {
+  scroll-margin-top: 5rem;
+}
+
+.reader code::before,
+.reader code::after {
+  content: none;
+}
+.reader :not(pre) > code {
+  background: var(--hover);
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+/* ---------- Fórmulas (KaTeX) ---------- */
+.reader .katex {
+  font-size: 1.08em;
+}
+.reader .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+/* ---------- Cores do código (classes geradas pelo rehype-highlight) ---------- */
+.hljs-keyword,
+.hljs-built_in,
+.hljs-literal {
+  color: var(--tok-kw);
+}
+.hljs-string {
+  color: var(--tok-str);
+}
+.hljs-number {
+  color: var(--tok-num);
+}
+.hljs-title {
+  color: var(--accent);
+}
+.hljs-comment {
+  color: var(--muted);
+  font-style: italic;
+}@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ---------- Cores do tema escuro (padrão) ---------- */
+:root[data-theme="dark"] {
+  --bg: #0f1115;
+  --surface: #12151c;
+  --line: #232936;
+  --fg: #e6e8ee;
+  --muted: #98a0b3;
+  --accent: #8fa8ff;
+  --hover: #1a2030;
+  --active: #1d2536;
+  --codebg: #0b0d12;
+  --callout: #161d2b;
+  --tok-kw: #c4a7ff;
+  --tok-str: #8fd19e;
+  --tok-num: #f0b072;
+}
+
+/* ---------- Cores do tema claro ---------- */
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --surface: #f6f7f9;
+  --line: #e3e6ec;
+  --fg: #1a1d24;
+  --muted: #5b6475;
+  --accent: #3b5bdb;
+  --hover: #eceff4;
+  --active: #e7ecff;
+  --codebg: #f3f4f7;
+  --callout: #eef2ff;
+  --tok-kw: #7048e8;
+  --tok-str: #2b8a3e;
+  --tok-num: #d9480f;
+}
+
+/* ---------- Ensina o Tailwind a usar essas cores ----------
+   Gera classes como bg-bg, bg-surface, border-line, text-fg,
+   text-muted, text-accent, bg-hover, bg-active, bg-codebg, bg-callout */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-hover: var(--hover);
+  --color-active: var(--active);
+  --color-codebg: var(--codebg);
+  --color-callout: var(--callout);
+}
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ---------- Base ---------- */
+html {
+  color-scheme: dark;
+}
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Texto dos resumos ---------- */
+.reader {
+  --tw-prose-body: var(--fg);
+  --tw-prose-headings: var(--fg);
+  --tw-prose-lead: var(--muted);
+  --tw-prose-links: var(--accent);
+  --tw-prose-bold: var(--fg);
+  --tw-prose-counters: var(--muted);
+  --tw-prose-bullets: var(--muted);
+  --tw-prose-hr: var(--line);
+  --tw-prose-quotes: var(--fg);
+  --tw-prose-quote-borders: var(--line);
+  --tw-prose-captions: var(--muted);
+  --tw-prose-code: var(--fg);
+  --tw-prose-th-borders: var(--line);
+  --tw-prose-td-borders: var(--line);
+}
+
+.reader h2 {
+  font-size: 1.35em;
+  margin-top: 2em;
+}
+.reader h3 {
+  font-size: 1.15em;
+}
+.reader h2,
+.reader h3 {
+  scroll-margin-top: 5rem;
+}
+
+.reader code::before,
+.reader code::after {
+  content: none;
+}
+.reader :not(pre) > code {
+  background: var(--hover);
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+/* ---------- Cores do código (classes geradas pelo rehype-highlight) ---------- */
+.hljs-keyword,
+.hljs-built_in,
+.hljs-literal {
+  color: var(--tok-kw);
+}
+.hljs-string {
+  color: var(--tok-str);
+}
+.hljs-number {
+  color: var(--tok-num);
+}
+.hljs-title {
+  color: var(--accent);
+}
+.hljs-comment {
+  color: var(--muted);
+  font-style: italic;
+}

@@ -1,10 +1,74 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resumosdev</title>
+    <title>resumosDev</title>
+    <meta name="description" content="Meus resumos de Ciência da Computação em Markdown." />
+
+    <!-- Preview ao compartilhar o link (WhatsApp, Discord...) -->
+    <meta property="og:title" content="resumosDev" />
+    <meta property="og:description" content="Meus resumos de Ciência da Computação em Markdown." />
+    <meta property="og:type" content="website" />
+
+    <!-- Fontes: Inter (texto) e JetBrains Mono (código) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      Aplica o tema ANTES do React carregar. Sem isso a página pisca
+      branca por um instante quando o tema salvo é o escuro.
+      O tema padrão é "dark".
+    -->
+    <script>
+      try {
+        document.documentElement.dataset.theme = localStorage.getItem('theme') || 'dark'
+      } catch (e) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html><!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>resumosDev</title>
+    <meta name="description" content="Meus resumos de Ciência da Computação em Markdown." />
+
+    <!-- Preview ao compartilhar o link (WhatsApp, Discord...) -->
+    <meta property="og:title" content="resumosDev" />
+    <meta property="og:description" content="Meus resumos de Ciência da Computação em Markdown." />
+    <meta property="og:type" content="website" />
+
+    <!-- Fontes: Inter (texto) e JetBrains Mono (código) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      Aplica o tema ANTES do React carregar. Sem isso a página pisca
+      branca por um instante quando o tema salvo é o escuro.
+      O tema padrão é "dark".
+    -->
+    <script>
+      try {
+        document.documentElement.dataset.theme = localStorage.getItem('theme') || 'dark'
+      } catch (e) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
